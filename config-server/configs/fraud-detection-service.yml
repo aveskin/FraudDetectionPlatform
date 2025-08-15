@@ -1,0 +1,31 @@
+kafka:
+  bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+  consumer:
+    group-id: fraud-consumers
+    auto-offset-reset: earliest
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    properties:
+      spring.json.trusted.packages: "*"
+  listener:
+    type: batch                                   # батч-обработка для производительности
+    ack-mode: record                              # или BATCH, если будете коммитить пачками
+
+topics:
+  in: transactions
+  dlt: transactions.dlt
+  out: fraud-results
+
+fraud:
+  max-tx-per-minute: 3
+  max-amount: 10000
+  window-ms: 60000
+
+management:
+  endpoints.web.exposure.include: "*"
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

@@ -4,7 +4,8 @@
 
 2. Transaction Service — принимает транзакцию и публикует в Kafka.
 
-3. Fraud Detection Service — многопоточно обрабатывает поток транзакций из Kafka, применяет правила (скоринг, лимиты, гео-проверки).
+3. Fraud Detection Service — многопоточно обрабатывает поток транзакций из Kafka, применяет правила (скоринг,
+   лимиты...).
 
 4. Notification Service — уведомляет о подозрительных транзакциях.
 
@@ -33,9 +34,5 @@
 
 5. Notification Service шлёт уведомления (email/sms mock).
 
-6. Reporting Service агрегирует данные для аналитики.
-
-
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/e36a337f-9dab-4b26-9077-8ef2294dd434" />
 
 
