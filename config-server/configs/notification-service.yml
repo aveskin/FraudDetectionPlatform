@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: notification-service
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: notification-consumers
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+    listener:
+      type: batch             # батч-обработка сообщений
+      ack-mode: record        # или batch, если нужна пачками
+
+topics:
+  in: fraud-alerts            # входной топик для алертов
+  dlt: fraud-alerts.dlt       # DLQ для проблемных сообщений
+
+management:
+  endpoints.web.exposure.include: "*"
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

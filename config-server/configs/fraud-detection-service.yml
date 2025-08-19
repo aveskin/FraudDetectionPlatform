@@ -14,7 +14,7 @@ kafka:
 topics:
   in: transactions
   dlt: transactions.dlt
-  out: fraud-results
+  out: fraud-alerts
 
 fraud:
   max-tx-per-minute: 3
