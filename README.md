@@ -9,13 +9,11 @@
 
 4. Notification Service — уведомляет о подозрительных транзакциях.
 
-5. Reporting Service — хранит историю и отдаёт отчёты.
+5. Kafka Broker — шина событий.
 
-6. Kafka Broker — шина событий.
+6. Config Server и Eureka — для конфигурации и сервис-дискавери.
 
-7. Config Server и Eureka — для конфигурации и сервис-дискавери.
 
-8. H2 — как dev-база
 
 Поток данных
 1. Клиент отправляет транзакцию → API Gateway → Transaction Service.
